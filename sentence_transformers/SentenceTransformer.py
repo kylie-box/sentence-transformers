@@ -596,6 +596,10 @@ class SentenceTransformer(nn.Sequential):
 
             self._eval_during_training(evaluator, output_path, save_best_model, epoch, -1, callback)
 
+        if epoch == 0:
+            import pdb;pdb.set_trace()
+            self._eval_during_training(evaluator, output_path, False, epoch, -1, callback)
+
         if evaluator is None and output_path is not None:   #No evaluator, but output path: save final model version
             self.save(output_path)
 
